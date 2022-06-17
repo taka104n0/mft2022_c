@@ -14,7 +14,7 @@ public class MarkerDetector : MonoBehaviour
     int selectCamera = 0;
     Mat srcMat;
     Texture2D dstTexture;
-    float alpha = 0.3f;
+    float alpha = 1.0f;
 
     Dictionary dictionary;
     int dictionaryId = Aruco.DICT_4X4_50;

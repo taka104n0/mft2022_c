@@ -12,7 +12,7 @@ public class Main : MonoBehaviour
     // Start is called before the first frame update
     async void Start()
     {
-        cubeManager = new CubeManager();
+        cubeManager = new CubeManager(ConnectType.Real);
         await cubeManager.MultiConnect(cubeNum);
     }
 
