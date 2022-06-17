@@ -71,7 +71,9 @@ public class MarkerDetector : MonoBehaviour
     private void OnDestroy()
     {
         this.webCamTexture.Stop();
-        Destroy(this.webCamTexture);
+        WebCamTexture.Destroy(this.webCamTexture);
+        this.srcMat.Dispose();
+        Texture2D.Destroy(this.dstTexture);
     }
     
 }
