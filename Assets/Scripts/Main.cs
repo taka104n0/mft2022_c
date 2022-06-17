@@ -14,6 +14,13 @@ public class Main : MonoBehaviour
     {
         cubeManager = new CubeManager(ConnectType.Real);
         await cubeManager.MultiConnect(cubeNum);
+        
+        /*
+        foreach (var navi in cubeManager.navigators)
+        {   
+            navi.mode = CubeNavigator.Mode.BOIDS;
+        }
+        */
     }
 
     // Update is called once per frame
@@ -35,11 +42,43 @@ public class Main : MonoBehaviour
         {
             markerX = (int)Map(markerX, 0, 1920, 34, 339);
             markerY = (int)Map(markerY, 0, 1080, 35, 250);
-            Debug.Log(markerY);
+            //Debug.Log(markerY);
 
+            /*
+            foreach (var navi in cubeManager.syncNavigators)
+            {
+                //int cubeX = (int)navi.handle.x;
+                //int cubeY = (int)navi.handle.y;
+                navi.Navi2Target(markerX, markerY).Exec();
+            }
+            */
+            
             foreach (var handle in cubeManager.syncHandles)
             {
-                handle.Move2Target(markerX, markerY, tolerance: 8).Exec();
+                int cubeX = (int)handle.x;
+                int cubeY = (int)handle.y;
+                if (cubeX < markerX)
+                {
+                    if (cubeY < markerY)
+                    {
+                        handle.Move2Target(markerX-20, markerY-20).Exec();
+                    } 
+                    else 
+                    {
+                        handle.Move2Target(markerX-20, markerY+20).Exec();
+                    }
+                }
+                else
+                {
+                    if (cubeY < markerY)
+                    {
+                        handle.Move2Target(markerX+20, markerY-20).Exec();
+                    } 
+                    else 
+                    {
+                        handle.Move2Target(markerX+20, markerY+20).Exec();
+                    }
+                }
             }
         }
     }

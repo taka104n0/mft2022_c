@@ -76,6 +76,10 @@ public class MarkerDetector : MonoBehaviour
             }
             //Debug.Log(markerCorners);
         } 
+        else
+        {
+            markerCorners = new string[]{"-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1"};
+        }
         
         //Utils.matToTexture2D(this.srcMat, this.dstTexture);
         //GetComponent<RawImage>().texture = this.dstTexture;
