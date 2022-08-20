@@ -18,9 +18,10 @@ public class Main : MonoBehaviour
         /*
         foreach (var navi in cubeManager.navigators)
         {   
-            navi.mode = CubeNavigator.Mode.BOIDS;
+            navi.mode = CubeNavigator.Mode.AVOID;
         }
         */
+        
     }
 
     // Update is called once per frame
@@ -53,6 +54,7 @@ public class Main : MonoBehaviour
             }
             */
             
+            /*
             foreach (var handle in cubeManager.syncHandles)
             {
                 int cubeX = (int)handle.x;
@@ -79,6 +81,41 @@ public class Main : MonoBehaviour
                         handle.Move2Target(markerX+20, markerY+20).Exec();
                     }
                 }
+            }
+            */
+
+            foreach (var navi in cubeManager.syncNavigators)
+            {
+                int cubeX = (int)navi.handle.x;
+                int cubeY = (int)navi.handle.y;
+                if (cubeX < markerX)
+                {
+                    if (cubeY < markerY)
+                    {
+                        navi.Navi2Target(markerX-10, markerY-10).Exec();
+                    } 
+                    else 
+                    {
+                        navi.Navi2Target(markerX-10, markerY+10).Exec();
+                    }
+                }
+                else
+                {
+                    if (cubeY < markerY)
+                    {
+                        navi.Navi2Target(markerX+10, markerY-10).Exec();
+                    } 
+                    else 
+                    {
+                        navi.Navi2Target(markerX+10, markerY+10).Exec();
+                    }
+                }
+            }
+        } else 
+        {
+            foreach (var navi in cubeManager.syncNavigators) 
+            {
+                navi.Navi2Target(Random.Range(44, 330), Random.Range(45, 241)).Exec();
             }
         }
     }
