@@ -1,6 +1,11 @@
 # mft2022_c
 An Unity project for MFT2022 TeamC.
 
+# 動作環境
+Unity 2021.3.0f1　　
+
+（※動作にはOpenCV for Unityが必要です。）
+
 ## 使い方
 1. カメラの画角をできるだけマットの真上になるように設置し、画角をマットが画面いっぱいに表示されるように調整する。
 2. Asset/Scripts/MarkerDetector.csの「selectCamera」変数を変更し、実行画面に使用しているカメラの映像が表示されるようにする。
