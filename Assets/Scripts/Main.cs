@@ -88,6 +88,7 @@ public class Main : MonoBehaviour
             {
                 int cubeX = (int)navi.handle.x;
                 int cubeY = (int)navi.handle.y;
+
                 if (cubeX < markerX)
                 {
                     if (cubeY < markerY)
@@ -115,7 +116,11 @@ public class Main : MonoBehaviour
         {
             foreach (var navi in cubeManager.syncNavigators) 
             {
-                navi.Navi2Target(Random.Range(44, 330), Random.Range(45, 241)).Exec();
+                int move = Random.Range(0, 30);
+
+                if (move < 1) {
+                    navi.Navi2Target(Random.Range(44, 330), Random.Range(45, 241)).Exec();
+                }
             }
         }
     }

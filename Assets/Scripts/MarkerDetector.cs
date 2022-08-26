@@ -11,7 +11,7 @@ public class MarkerDetector : MonoBehaviour
 {
     WebCamTexture webCamTexture;
     WebCamDevice[] webCamDevice;
-    int selectCamera = 0;
+    int selectCamera = 1;
     Mat srcMat;
     Texture2D dstTexture;
     float alpha = 0.5f;
